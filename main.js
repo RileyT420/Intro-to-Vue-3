@@ -2,11 +2,11 @@ const app = Vue.createApp({
     data() {
         return {
             product: 'Socks',
-            image: './assets/images/socks_blue.jpg',
+            description: 'They are socks',
+            image: './assets/images/socks_green.jpg',
+            url: 'https://www.vuemastery.com/',
             inventory: 100,
-            // solution
             onSale: true
-            // solution
         }
     }
 })
