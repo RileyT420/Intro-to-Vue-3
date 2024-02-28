@@ -14,11 +14,11 @@
       <div class="cart">Cart({{ cart }})</div>
       <div class="product-display">
         <div class="product-container">
-          <div class="product-image">
+          <div class="product-image" :class="{ 'out-of-stock-img': !inStock }">
             <img :src="image" alt="Socks">
           </div>
           <div class="product-info">
-            <h1>{{ product }}</h1>
+            <h1>{{ title }}</h1>
 
             <p v-if="inventory > 10">In Stock</p>
             <p v-else-if="inventory <= 10 && inventory > 0"> Almost Sold Out </p>
@@ -36,13 +36,13 @@
               <li v-for="detail in details">{{ detail }}</li>
             </ul>
 
-            <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{variant.color}}</div>
+            <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)" class="color-circle" :style="{backgroundColor: variant.color}">{{}}</div>
           
           <ul>
             <li v-for="size in sizes">{{ size }}</li>
           </ul>
 
-          <button class="button" v-on:click="addToCart">Add to Cart</button>
+          <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>
 
 
             <p>Visit <a :href="url">Vuemastery.com</a> for more</p>
