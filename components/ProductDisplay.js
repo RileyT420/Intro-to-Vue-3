@@ -70,18 +70,14 @@ data () {
 },
 methods:{
     addToCart(){
-        this.cart +=1;
+        this.$emit("add-to-cart", this.variants[this.selectedVariant].id);
     },
     updateVariant(index){
         this.selectedVariant = index;
       
     },
     removeFromCart(){
-        if (this.cart>0){
-            this.cart -=1;
-        } else{
-            this.cart = 0;
-        }
+        this.$emit("remove-from-cart");
        
     },
 }, 
