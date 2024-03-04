@@ -49,6 +49,7 @@ app.component("product-display", {
       </div>
       
 </div>
+<review-form @review-submitted="addReview"></review-form>
 </div>`,
 data () {
     return{
@@ -75,6 +76,9 @@ methods:{
     updateVariant(index){
         this.selectedVariant = index;
       
+    },
+    addReview(Review){
+        this.reviews.push(review)
     },
     removeFromCart(){
         this.$emit("remove-from-cart");
