@@ -49,6 +49,7 @@ app.component("product-display", {
       </div>
       
 </div>
+<review-list :reviews="reviews"></review-list>
 <review-form @review-submitted="addReview"></review-form>
 </div>`,
 data () {
@@ -67,6 +68,7 @@ data () {
             { id: 2235, color: 'blue', image: "./assets/images/socks_blue.jpg", quantity: 0}
         ],
         sizes: ["xsmall", "small", "medium", "large", "xlarge"],
+        reviews: []
     }
 },
 methods:{
@@ -77,13 +79,12 @@ methods:{
         this.selectedVariant = index;
       
     },
-    addReview(Review){
+    addReview(review){
         this.reviews.push(review)
     },
     removeFromCart(){
         this.$emit("remove-from-cart");
-       
-    },
+    }
 }, 
 computed:{
     title(){
